@@ -15,7 +15,10 @@ jobs:
     runs-on: windows-2019
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@master
+    - uses: actions-rs/toolchain@v1
+      with:
+        toolchain: nightly
     - name: Setup
       run: rustup target add x86_64-pc-windows-gnu
     - name: Setup
