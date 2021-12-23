@@ -16,10 +16,11 @@ jobs:
 
     steps:
       - name: Add target
-        run: | 
-         rustup target add x86_64-pc-windows-gnu
-         rustup toolchain install stable-x86_64-pc-windows-gnu
+        run: rustup target add x86_64-pc-windows-gnu
+      - name: Add target 2 
+        run: rustup toolchain install stable-x86_64-pc-windows-gnu
 
+         
       - uses: actions/checkout@master
       - id: component
         uses: actions-rs/components-nightly@v1
