@@ -11,22 +11,23 @@ env:
 
 jobs:
   build:
-
+    
     runs-on: windows-2019
 
     steps:
-    - uses: actions/checkout@master
-    - uses: actions-rs/toolchain@v1
-      with:
-        toolchain: nightly
-    - name: Setup
-      run: rustup target add x86_64-pc-windows-gnu
-    - name: Setup
-      run: rustup toolchain install stable-x86_64-pc-windows-gnu
-    - name: Build
-      uses: actions-rs/cargo@v1
-      with:
-        command: build
-        args: --release --target=x86_64-pc-windows-gnu
-    - name: Run tests
-      run: cargo test --verbose
+      - uses: actions/checkout@master
+      - id: component
+        uses: actions-rs/components-nightly@v1
+        with:
+          component: clippy
+      - uses: actions-rs/toolchain@v1
+        with:
+            toolchain: nightly
+            override: true
+      - name: Build
+        uses: actions-rs/cargo@v1
+        with:
+         command: build
+         args: --release --target=x86_64-pc-windows-gnu
+      - name: Run tests
+        run: cargo test --verbose
