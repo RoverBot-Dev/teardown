@@ -20,7 +20,11 @@ jobs:
       run: rustup target add x86_64-pc-windows-gnu
     - name: Setup
       run: rustup toolchain install stable-x86_64-pc-windows-gnu
-    - name: build
-      run: cargo build --target x86_64-pc-windows-gnu
+    - name: Build
+      uses: actions-rs/cargo@v1
+      with:
+        command: build
+        args: --release --target=x86_64-pc-windows-gnu
+        use-cross: true
     - name: Run tests
       run: cargo test --verbose
