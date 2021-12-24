@@ -16,9 +16,9 @@ jobs:
 
     steps:
       - name: Add target
-        run: rustup target add x86_64-pc-windows-gnu
+        run: rustup target add x86_64-pc-windows-msvc
       - name: Add target 2 
-        run: rustup toolchain install stable-x86_64-pc-windows-gnu
+        run: rustup toolchain install stable-x86_64-pc-windows-msvc
 
          
       - uses: actions/checkout@master
@@ -34,6 +34,6 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
          command: build
-         args:  --package teardown-converter --release --target=x86_64-pc-windows-gnu 
+         args:  --package teardown-converter --release --target=x86_64-pc-windows-msvc
       - name: Run tests
         run: cargo test --verbose 
