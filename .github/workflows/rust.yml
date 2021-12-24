@@ -35,5 +35,4 @@ jobs:
         with:
          command: build
          args:  --package teardown-converter --release --target=x86_64-pc-windows-msvc
-      - name: Run tests
-        run: cargo test --verbose 
+     
